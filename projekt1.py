@@ -29,7 +29,7 @@ if True:
                 ld.append(float(linia[1]) * np.pi / 180)
                 hd.append(float(linia[2]) * np.pi / 180)
 
-
+if 'X' in typ:
     class XYZ:
         a = 6378137
         e2 = 0.00669438002290
@@ -54,6 +54,9 @@ if True:
             f, l, h = gw.hirvonen(self.X, self.Y, self.Z, a, e2)
             self.neu = gw.XYZ2neu(dXYZ, f, l)
             return (self.neu)
+
+elif 'f' in typ or 'B' in typ or 'F' in typ:
+    print('flh uruchomione')
 
 
     class flh:
