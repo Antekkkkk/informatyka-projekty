@@ -54,3 +54,26 @@ if True:
             f, l, h = gw.hirvonen(self.X, self.Y, self.Z, a, e2)
             self.neu = gw.XYZ2neu(dXYZ, f, l)
             return (self.neu)
+
+
+    class flh:
+        def __init__(self, f, l, h):
+            self.f = f
+            self.l = l
+            self.h = h  # definiuję zmienne dla klasy
+
+        def flh2XYZ(self):
+            f = self.f
+            l = self.l
+            h = self.h
+            self.X, self.Y, self.Z = gw.flh2XYZ(f, l, h, a, e2)
+            return (self.X, self.Y, self.Z)
+
+
+    class u2000:
+        def __init__(self, f, l, h, elip, typ):
+            self.f = f
+            self.l = l
+            self.h = h
+            self.elip = elip
+            self.typ = typ
