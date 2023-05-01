@@ -14,7 +14,7 @@ Wynikiem będą przeliczone dane, które będą odpowiednio poopisywane. Gotowy 
 Program należy odpalić za pomocą wiersza poleceń w pythonie. najpierw należy wpisać 'python', potem ścieżke kodu, a potem ścieżkępliku z danymi.
 ![image](https://user-images.githubusercontent.com/129069654/235513886-d61a3c17-9968-4d05-b9ba-6d584b99a5ad.png)
 
-Uwaga: program został napisany w pythonie 3.8, a użyte biblioteki to numpy, os, argparse, math. W folderze z kodem powinien znajdować się także plik gw, zawierający funkcje dokonujących obliczeń. 
+Uwaga: program został napisany w pythonie 3.8, a użyte biblioteki to numpy, os, argparse, math. W folderze z kodem powinien znajdować się także plik gw, zawierający funkcje dokonujących obliczeń. Jednostki danych powinny być albo w metrach (XYZ), albo w stopniach dziesiętnych (flh).
 
 Przykład pliku z wynikami:
 
@@ -33,3 +33,4 @@ Znane błędy:
  - Błąd, gdy w podanym pliku liczby po przecinku podane są z przecinkiem a nie kropką.
  - Jeśli w nazwie podanej elipsoidy znajdą się naraz pewne znaki, np 8 i 0, program i tak je obsłuży ale wyniki będą złe. 
  - Plik otrzymany wyświetla komunikat o podanych danych. Czasem wyświetla się niepoprawnie, choć można rozczytać co program miał na myśli. Błąd bardziej estetyczny.
+
