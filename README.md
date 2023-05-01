@@ -16,4 +16,20 @@ Program należy odpalić za pomocą wiersza poleceń w pythonie. najpierw należ
 
 Uwaga: program został napisany w pythonie 3.8, a użyte biblioteki to numpy, os, argparse, math. W folderze z kodem powinien znajdować się także plik gw, zawierający funkcje dokonujących obliczeń. 
 
+Przykład pliku z wynikami:
 
+![image](https://user-images.githubusercontent.com/129069654/235519692-d4a05175-6a06-42b9-885e-f099e78311b0.png)
+
+lub
+
+![image](https://user-images.githubusercontent.com/129069654/235516816-a1b9a33f-6271-4834-ac9e-b69ff7fc76b2.png)
+
+Kod ten umożliwia przeliczanie współrzędnych na kolejno:
+ - Z danych XYZ na fi lambda h oraz układ neu
+ - Z danych fi lambda h na XYZ, oraz z danej elipsoidy na układ 2000 i 1992.
+
+
+Znane błędy:
+ - Błąd, gdy w podanym pliku liczby po przecinku podane są z przecinkiem a nie kropką.
+ - Jeśli w nazwie podanej elipsoidy znajdą się naraz pewne znaki, np 8 i 0, program i tak je obsłuży ale wyniki będą złe. 
+ - Plik otrzymany wyświetla komunikat o podanych danych. Czasem wyświetla się niepoprawnie, choć można rozczytać co program miał na myśli. Błąd bardziej estetyczny.
