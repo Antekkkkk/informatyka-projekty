@@ -77,3 +77,65 @@ if True:
             self.h = h
             self.elip = elip
             self.typ = typ
+
+        def trans(self):
+            if '0' in elip:
+                print('wgs 80')
+                self.a = 1
+                self.e2 = 2
+                self.lam0, self.n = gw.strefy2000(self.l)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy2000(self.xgk, self.ygk, self.n)
+                return (self.x, self.y)
+
+            elif '4' in elip:
+                print('grs 84')
+                self.a = 6378137.000
+                self.e2 = 0.00669438
+                self.lam0, self.n = gw.strefy2000(self.l)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy2000(self.xgk, self.ygk, self.n)
+                return (self.x, self.y)
+
+            elif 'r' in elip and 'a' in elip and 's' in elip:
+                print('krasowski')
+                self.a = 6378245.000
+                self.e2 = 0.00669342
+                self.lam0, self.n = gw.strefy2000(self.l)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy2000(self.xgk, self.ygk, self.n)
+                return (self.x, self.y)
+
+
+    class u1992:
+        def __init__(self, f, l, h, elip, typ):
+            self.f = f
+            self.l = l
+            self.h = h
+            self.elip = elip
+            self.typ = typ
+
+        def trans(self):
+            if '0' in elip:
+                print('wgs 80')
+                self.a = 1
+                self.e2 = 2
+                self.lam0 = gw.dms2rad(19, 0, 0)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy1992(self.xgk, self.ygk)
+
+            elif '4' in elip:
+                print('grs 84')
+                self.a = 6378137.000
+                self.e2 = 0.00669438
+                self.lam0 = gw.dms2rad(19, 0, 0)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy1992(self.xgk, self.ygk)
+
+            elif 'r' in elip and 'a' in elip and 's' in elip:
+                print('krasowski')
+                self.a = 6378245.000
+                self.e2 = 0.00669342
+                self.lam0 = gw.dms2rad(19, 0, 0)
+                self.xgk, self.ygk = gw.fl2xygk(self.f, self.l, self.lam0, self.a, self.e2)
+                self.x, self.y = gw.xy1992(self.xgk, self.ygk)
