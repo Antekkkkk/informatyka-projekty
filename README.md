@@ -1,7 +1,7 @@
 # Informatyka-projekt-1
 Projekt został napisany w ramach zajęć z Informatyki na 4 semestrze na kierunku Geodezja i Kartografia.
 
-W skłąd projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajdują się funkcje napisane w 3 semestrze studiów, które dokonują geodezyjnych obliczeń. Plik projekt1.py to kod który jest wywoływany, i który za pomocą funkcji z pliku gw.py tworzy plik z wynikami. 
+W skład projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajdują się funkcje napisane w 3 semestrze studiów, które dokonują geodezyjnych obliczeń. Plik projekt1.py to kod który jest wywoływany, i który za pomocą funkcji z pliku gw.py tworzy plik z wynikami. 
 
 Działanie kodu opiera się na podanym przez użytkownika pliku w formacie txt. Pierwsza linijka powinna zawierać rodzaj danych, czyli jedno z dwóch: 'XYZ', albo 'flh'. Kolejna 
 linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84' i 'Krasowski'.
