@@ -6,7 +6,7 @@ W skład projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajduj�
 Działanie kodu opiera się na podanym przez użytkownika pliku w formacie txt. Pierwsza linijka powinna zawierać rodzaj danych, czyli jedno z dwóch: 'XYZ', albo 'flh'. Kolejna 
 linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84' i 'Krasowski'.
 
-Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno dane x y z, albo f l h, oddzielone od siebie spacją. Przykład:
+Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno dane x y z (warażone w metrach), albo f l h (wyrażone w stopniach dziesiętnych), oddzielone od siebie spacją. Przykład:
 ![image](https://user-images.githubusercontent.com/129069654/235513210-5f12e9cc-0e6e-4cf3-bb84-977f53752102.png)
 
 
