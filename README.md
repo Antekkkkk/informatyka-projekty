@@ -7,6 +7,8 @@ Działanie kodu opiera się na podanym przez użytkownika pliku w formacie txt. 
 linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84' i 'Krasowski'.
 
 Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno dane x y z (warażone w metrach), albo f l h (wyrażone w stopniach dziesiętnych), oddzielone od siebie spacją. Przykład:
+
+
 ![image](https://user-images.githubusercontent.com/129069654/235513210-5f12e9cc-0e6e-4cf3-bb84-977f53752102.png)
 
 
