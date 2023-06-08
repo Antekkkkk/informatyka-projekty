@@ -7,9 +7,15 @@ if __name__ == '__main__' :
     import argparse
     parser = argparse.ArgumentParser(description='Przeliczanie danych')
     parser.add_argument('path', type = str, help='Ścieżka pliku')               #tworze zmienną args.path która będzie zawierała nazwę pliku do odczytu
+    try:
+        parser.add_argument('X0', type=float, help='X0')
+        parser.add_argument('Y0', type=float, help='Y0')
+        parser.add_argument('Z0', type=float, help='Z0')
+    except:
+        pass
+
     args = parser.parse_args()
-    print(args.path)
-    #path = '''C:\Users\antek\Desktop\xyz.txt'''
+
     with open(args.path, 'r') as plik:
         print('plik odczytany prawidłowo')
         linie = plik.readlines()
@@ -21,7 +27,9 @@ if __name__ == '__main__' :
         hd = []
         typ = str(linie[0].split())
         elip = list(str(linie[1]))
-        dane = linie[2:]                                #z pierwszych linijek odczytuję rodzaj danych i typ elipsoidy
+        dane = linie[3:]                                #z pierwszych linijek odczytuję rodzaj danych i typ elipsoidy
+
+
         typ = list(typ)
         if 'X' in typ:
             for linia in dane:
@@ -29,6 +37,20 @@ if __name__ == '__main__' :
                 Xd.append(float(linia[0]))
                 Yd.append(float(linia[1]))               # puste listy zapełniam danymi
                 Zd.append(float(linia[2]))
+                trans = str(linie[2].split())
+                czyNEU = 0
+                czyFLH = 0
+                for i in trans:
+                    typTrans = i
+
+                    if 'n' in typTrans or 'N' in typTrans:
+                        czyNEU = 1
+
+                    if 'F' in typTrans or 'f' in typTrans:
+                        czyFLH = 1
+
+
+
         elif 'f' in typ:
             for linia in dane:
                 linia = linia.split()
@@ -36,16 +58,36 @@ if __name__ == '__main__' :
                 ld.append(float(linia[1])*np.pi/180)        # jeśli rodzaj danych to flh, inne dane są podawane
                 hd.append(float(linia[2])*np.pi/180)
 
+                trans = str(linie[2].split())
+                czy2000 = 0
+                czy1992 = 0
+                czyXYZ = 0
+                for i in trans:
+                    typTrans = i
+
+                    if '2' in typTrans and '0' in typTrans:
+                        czy2000 = 1
+
+                    if '1' in typTrans and '9' in typTrans:
+                        czy1992 = 1
+
+                    if 'X' in typTrans or 'x' in typTrans:
+                        czyXYZ = 1
+
+
 
     if 'X' in typ:                                           # odpalany gdy typ danych to xyz
         class XYZ:
             a = 6378137
             e2 = 0.00669438002290
 
-            def __init__(self, X, Y, Z):
+            def __init__(self, X, Y, Z, X0, Y0, Z0):
                 self.X = X
                 self.Y = Y                                     # wprowadzam dane do klasy
                 self.Z = Z
+                self.X0 = X0
+                self.Y0 = Y0  # wprowadzam dane do klasy
+                self.Z0 = Z0
 
             def XYZ2flh(self):
                 X = self.X
@@ -58,7 +100,8 @@ if __name__ == '__main__' :
                 return(self.fi,self.la,self.h)
 
             def XYZ2neu(self):
-                dXYZ = [self.X,self.Y,self.Z]
+
+                dXYZ = [self.X0-self.X,self.Y0-self.Y,self.Z0-self.Z]
                 f, l, h = gw.hirvonen(self.X,self.Y,self.Z,a,e2)
                 self.neu = gw.XYZ2neu(dXYZ,f,l)                     # funkcja przeliczająca xyz na neu
                 return(self.neu)
@@ -161,7 +204,7 @@ if __name__ == '__main__' :
     if 'X' in typ:
         #print('XYZ wywołanie odpalone')
         for i in range(0,len(Xd)):
-            wsp = XYZ(Xd[i], Yd[i], Zd[i])
+            wsp = XYZ(Xd[i], Yd[i], Zd[i], args.X0, args.Y0, args.Z0)
             f,l,h = wsp.XYZ2flh()
             neu = wsp.XYZ2neu()
             wynikflh = [f,l,h]
@@ -192,6 +235,7 @@ if __name__ == '__main__' :
     current_directory_path = os.path.dirname(current_file_path)     #wpisuje miejsce, w którym zapisany zostanie plik z wynikami. Jest to folder
     print(current_directory_path)                                   # w którym znajduje się plik z kodem
 
+
     with open(f"{current_directory_path}\otrzymane wyniki.txt", "w") as file:       #tworzę plik z wynikami
         if 'X' in typ:
             podanytyp = 'XYZ'
@@ -208,22 +252,27 @@ if __name__ == '__main__' :
             elipsoida = 'Krasowski'
 
         file.write(f"Podałeś dane w formacie {podanytyp}, dla elipsoidy {elipsoida}.\n")
-        file.write(f"Dane przeliczone z {podanytyp} na {obliczany}:\n")
         if podanytyp == 'XYZ':
-            for i in gotflh:
-                file.write(f"X: {i[0]} Y: {i[1]} Z: {i[2]}\n")
-            file.write(f"Dane przeliczone z {podanytyp} na układ neu:\n")
-            for i in gotneu:
-                file.write(f"n: {i[0]} e: {i[1]} u: {i[2]}\n")
+            if czyFLH ==1:
+                file.write(f"Dane przeliczone z {podanytyp} na {obliczany}:\n")
+                for i in gotflh:
+                    file.write(f"f: {i[0]} l: {i[1]} h: {i[2]}\n")
+                file.write(f"Dane przeliczone z {podanytyp} na układ neu:\n")
+            if czyNEU == 1:
+                for i in gotneu:
+                    file.write(f"n: {i[0]} e: {i[1]} u: {i[2]}\n")
         elif podanytyp == 'flh':
-            for i in gotxyz:
-                file.write(f"X: {i[0]} Y: {i[1]} Z: {i[2]}\n")
+            if czyXYZ == 1:
+                for i in gotxyz:
+                    file.write(f"X: {i[0]} Y: {i[1]} Z: {i[2]}\n")
             #file.write(f"Dane przeliczone z {podanytyp} na układ {obliczany}:\n")
             #for i in gotneu:
             #    file.write(f"n: {i[0]} e: {i[1]} u: {i[2]}\n")
-            file.write(f"Dane przeliczone z elipsoidy {elipsoida} na układ 2000:\n")
-            for i in gotxy2000:
-                file.write(f"X2000: {i[0]} Y2000: {i[1]}\n")
-            file.write(f"Dane przeliczone z elipsoidy {elipsoida} na układ 1992:\n")
-            for i in gotxy1992:
-                file.write(f"X1992: {i[0]} Y1992: {i[1]}\n")
+            if czy2000 == 1:
+                file.write(f"Dane przeliczone z elipsoidy {elipsoida} na układ 2000:\n")
+                for i in gotxy2000:
+                    file.write(f"X2000: {i[0]} Y2000: {i[1]}\n")
+            if czy1992 == 1:
+                file.write(f"Dane przeliczone z elipsoidy {elipsoida} na układ 1992:\n")
+                for i in gotxy1992:
+                    file.write(f"X1992: {i[0]} Y1992: {i[1]}\n")
