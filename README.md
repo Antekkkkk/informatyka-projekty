@@ -1,7 +1,7 @@
 # Informatyka-projekt-1
 Projekt został napisany w ramach zajęć z Informatyki na 4 semestrze na kierunku Geodezja i Kartografia.
 
-W skład projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajdują się funkcje napisane w 3 semestrze studiów, które dokonują geodezyjnych obliczeń. Plik projekt1.py to kod który jest wywoływany, i który za pomocą funkcji z pliku gw.py tworzy plik z wynikami. 
+W skład projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajdują się funkcje napisane w 3 semestrze studiów, które dokonują geodezyjnych obliczeń. Plik projekt1.py to kod który jest wywoływany, i który za pomocą funkcji z pliku gw.py tworzy plik z wynikami. .
 
 Działanie kodu opiera się na podanym przez użytkownika pliku w formacie txt. Pierwsza linijka powinna zawierać rodzaj danych, czyli jedno z dwóch: 'XYZ', albo 'flh'. Kolejna 
 linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84' i 'Krasowski'. W 3 linijce należy wpisać w dowolnej kolejności transformacje, które chcemy wykonać. Dla danych 'XYZ' będą to NEU alb FLH, a dla danych FLH będą to XYZ, 1992, 2000.
@@ -11,6 +11,8 @@ Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno
 
 ![image](https://github.com/Antekkkkk/informatyka-projekty/assets/129069654/bf61a1bd-60be-4db9-942a-f6b767970b45)
 
+
+Uwaga: przy obliczaniu Neu, podczas wywoywania pliku, po sciezce do pliku nalezy wpisac kolejo X0 Y0 i Z0
 
 Wynikiem będą przeliczone dane, które będą odpowiednio poopisywane. Gotowy plik zapisze się w folderzee w którym znajduje się kod, pod nazwą 'otrzymane wyniki.txt'
 
