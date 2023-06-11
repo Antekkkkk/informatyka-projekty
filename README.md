@@ -9,7 +9,7 @@ linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84'
 Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno dane x y z (wyrażone w metrach), albo f l h (wyrażone w stopniach dziesiętnych), oddzielone od siebie spacją. Wyniki podane będą w takich samych jednostkach. Przykład:
 
 
-![image](https://user-images.githubusercontent.com/129069654/235513210-5f12e9cc-0e6e-4cf3-bb84-977f53752102.png)
+![image](https://github.com/Antekkkkk/informatyka-projekty/assets/129069654/bf61a1bd-60be-4db9-942a-f6b767970b45)
 
 
 Wynikiem będą przeliczone dane, które będą odpowiednio poopisywane. Gotowy plik zapisze się w folderzee w którym znajduje się kod, pod nazwą 'otrzymane wyniki.txt'
