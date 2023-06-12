@@ -6,6 +6,8 @@ W skład projektu wchodzą 2 pliki - gw.py i projekt1.py. W pliku gw.py znajduj�
 Działanie kodu opiera się na podanym przez użytkownika pliku w formacie txt. Pierwsza linijka powinna zawierać rodzaj danych, czyli jedno z dwóch: 'XYZ', albo 'flh'. Kolejna 
 linijka powinna zawierać nazwę elipsoidy. Obsługiwane są 3: 'GRS80', 'WGS84' i 'Krasowski'. W 3 linijce należy wpisać w dowolnej kolejności transformacje, które chcemy wykonać. Dla danych 'XYZ' będą to NEU alb FLH, a dla danych FLH będą to XYZ, 1992, 2000.
 
+UWAGA! Nie zalecane jest korzystanie z obliczeń korzystających z elipsoidy Krasowskiego, gdyż wyniki będą błędne.
+
 Następnie należy podać dane. W jednym wierszu powinny znajdować się kolejno dane x y z (wyrażone w metrach), albo f l h (wyrażone w stopniach dziesiętnych), oddzielone od siebie spacją. Wyniki podane będą w takich samych jednostkach. Przykład:
 
 
@@ -24,7 +26,7 @@ Uwaga: program został napisany w pythonie 3.8, a użyte biblioteki to numpy, os
 
 Przykład pliku z wynikami:
 
-![image](https://user-images.githubusercontent.com/129069654/235519692-d4a05175-6a06-42b9-885e-f099e78311b0.png)
+![image](https://github.com/Antekkkkk/informatyka-projekty/assets/129069654/23f4b738-bb4e-4216-bb09-1d0cb904fc4e)
 
 lub
 
@@ -39,4 +41,4 @@ Znane błędy:
  - Błąd, gdy w podanym pliku liczby po przecinku podane są z przecinkiem a nie kropką.
  - Jeśli w nazwie podanej elipsoidy znajdą się naraz pewne znaki, np 8 i 0, program i tak je obsłuży ale wyniki będą złe. 
  - Plik otrzymany wyświetla komunikat o podanych danych. Czasem wyświetla się niepoprawnie, choć można rozczytać co program miał na myśli. Błąd bardziej estetyczny.
-
+ - UWAGA! Nie zalecane jest korzystanie z obliczeń korzystających z elipsoidy Krasowskiego, gdyż wyniki będą błędne.
